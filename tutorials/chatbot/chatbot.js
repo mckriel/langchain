@@ -39,7 +39,7 @@ const input2 = [{role: "user", content: "What's my name?"}];
 const output = await app.invoke({ messages: input }, config);
 
 // The output contains all messages in the state.
-// This will long the last message in the conversation.
+// This will log the last message in the conversation.
 console.log(output.messages[output.messages.length - 1]);
 
 
