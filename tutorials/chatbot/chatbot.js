@@ -33,25 +33,19 @@ const app = workflow.compile({ checkpointer: memory });
 
 const config = { configurable: { thread_id: uuidv4() } };
 
-const input = [
-  {
-    role: "user",
-    content: "Hi! I'm Bob.",
-  },
-];
+const input = [{role: "user", content: "Hi! I'm Bob."},];
+const input2 = [{role: "user", content: "What's my name?"}];
+
 const output = await app.invoke({ messages: input }, config);
+
 // The output contains all messages in the state.
 // This will long the last message in the conversation.
 console.log(output.messages[output.messages.length - 1]);
 
 
+const output2 = await app.invoke({ messages: input2 }, config);
+console.log(output2.messages[output2.messages.length - 1]);
 
 
-// await llm.invoke([{ role: "user", content: "Hi im bob" }]);
-// await llm.invoke([{ role: "user", content: "Whats my name" }]);
-
-// await llm.invoke([
-//     { role: "user", content: "Hi! I'm Bob" },
-//     { role: "assistant", content: "Hello Bob! How can I assist you today?" },
-//     { role: "user", content: "What's my name?" },
-// ]);
+const output4 = await app.invoke({ messages: input2 }, config);
+console.log(output4.messages[output4.messages.length - 1]);
